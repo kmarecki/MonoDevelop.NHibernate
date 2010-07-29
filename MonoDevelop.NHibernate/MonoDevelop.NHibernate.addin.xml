@@ -11,4 +11,11 @@
 	<Runtime>
 		
 	</Runtime>
+	
+	<Extension path = "/MonoDevelop/Ide/Commands">
+		<Category _name = "NHibernate" id = "NHibernate">
+		<Command id = "MonoDevelop.NHibernate.Commands.AddNewHbmFile"
+				_label = "New hbm file..." />
+		</Category>
+	</Extension>
 </Addin>
