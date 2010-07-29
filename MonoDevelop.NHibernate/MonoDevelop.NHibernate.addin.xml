@@ -1,0 +1,14 @@
+<Addin id = "MonoDevelop.NHibernate"
+       namespace = "MonoDevelop.NHibernate"
+       name	= "NHibernate addin"
+       author	 = "Krzysztof Marecki"
+       copyright = "LGPLv2"
+       url       = ""
+       description = "Provides support for creating NHibernate mapping files."
+	   category    = "IDE extensions"
+       version   = "2.4">
+
+	<Runtime>
+		
+	</Runtime>
+</Addin>
