@@ -32,14 +32,35 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="MonoDevelop.Ide, Version=2.4.0.0, Culture=neutral">
+      <Package>monodevelop</Package>
+    </Reference>
+    <Reference Include="MonoDevelop.Core, Version=2.4.0.0, Culture=neutral">
+      <Package>monodevelop</Package>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="Mono.Posix" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Commands.cs" />
+    <Compile Include="MonoDevelop.NHibernate.NodeBuilders\ProjectFolderNodeBuilderExtension.cs" />
+    <Compile Include="MonoDevelop.NHibernate.NodeBuilders\ProjectFolderCommandHandler.cs" />
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="MonoDevelop.NHibernate.Dialogs\NewHbmFileDialog.cs" />
+    <Compile Include="gtk-gui\MonoDevelop.NHibernate.Dialogs.NewHbmFileDialog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <EmbeddedResource Include="MonoDevelop.NHibernate.addin.xml">
       <LogicalName>MonoDevelop.NHibernate.addin.xml</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MonoDevelop.NHibernate.NodeBuilders\" />
+    <Folder Include="MonoDevelop.NHibernate.Dialogs\" />
   </ItemGroup>
 </Project>
