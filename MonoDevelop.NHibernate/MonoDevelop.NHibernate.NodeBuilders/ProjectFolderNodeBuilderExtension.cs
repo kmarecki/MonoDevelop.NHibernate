@@ -29,7 +29,7 @@ namespace MonoDevelop.NHibernate.NodeBuilders
 	{
 		public override bool CanBuildNode (Type dataType)
 		{
-			return typeof(ProjectFolder).IsAssignableFrom (dataType);// ||
+			return typeof(ProjectFolder).IsAssignableFrom (dataType);
 		}
 		
 		public override Type CommandHandlerType {

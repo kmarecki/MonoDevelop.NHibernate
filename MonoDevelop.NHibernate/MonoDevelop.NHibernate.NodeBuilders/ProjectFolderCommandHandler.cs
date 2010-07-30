@@ -21,7 +21,10 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 using System;
 using MonoDevelop.Components.Commands;
+using MonoDevelop.Ide;
 using MonoDevelop.Ide.Gui.Components;
+using MonoDevelop.Ide.Gui.Pads.ProjectPad;
+using MonoDevelop.Projects;
 
 using MonoDevelop.NHibernate.Dialogs;
 	
@@ -32,8 +35,22 @@ namespace MonoDevelop.NHibernate.NodeBuilders
 		[CommandHandler (MonoDevelop.NHibernate.Commands.AddNewHbmFile)]
 		public void AddNewHbmFile()
 		{
-			var dialog = new NewHbmFileDialog ();
-			dialog.Run ();
+			object dataItem = CurrentNode.DataItem;
+			DotNetProject project = CurrentNode.GetParentDataItem (typeof(Project), true) as DotNetProject;
+			ProjectFolder folder = CurrentNode.GetParentDataItem (typeof(ProjectFolder), true) as ProjectFolder;
+		
+			string path;
+			if (folder != null)
+				path = folder.Path;
+			else
+				path = project.BaseDirectory;
+
+			IdeApp.ProjectOperations.CreateProjectFile (project, path, "NHClassMapping");
+			IdeApp.ProjectOperations.Save (project);
+			
+			ITreeNavigator nav = Tree.GetNodeAtObject (dataItem);
+			if (nav != null)
+				nav.Expanded = true;
 		}
 	}
 }

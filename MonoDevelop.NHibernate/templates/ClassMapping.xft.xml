@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Template
+	Originator="Krzysztof Marecki"
+	Created="2010/07/29"
+	LastModified="2010/07/29">
+
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>Class mapping file</_Name>
+		<Icon></Icon>
+		<_Category>NHibernate</_Category>
+		<_Description>NHibernate class mapping file</_Description>
+	</TemplateConfiguration>
+
+	<!-- Template Content -->
+	<TemplateFiles>
+		<File name="${Name}.hbm.xml" >
+			<![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+				   assembly="${ProjectName}" 
+                   namespace="${Namespace}"> 
+     
+  <class name="${Name}"> 
+    <id name="Id" column="id">  
+      <generator class="native" />  
+    </id> 
+    <property name="Name" column="name" type="String" /> 
+  </class> 
+
+</hibernate-mapping>
+			]]>
+		</File>
+	</TemplateFiles>
+</Template>

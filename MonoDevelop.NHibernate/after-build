@@ -1,0 +1,9 @@
+#!/bin/bash
+
+TARGET_FILE=$1
+DEST=~/.config/MonoDevelop/addins/
+
+if [ ! -d $DEST ]; then
+	mkdir $DEST
+fi
+cp $TARGET_FILE $DEST

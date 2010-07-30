@@ -1,5 +1,5 @@
-<Addin id = "MonoDevelop.NHibernate"
-       namespace = "MonoDevelop.NHibernate"
+<Addin id = "NHibernate"
+       namespace = "MonoDevelop"
        name	= "NHibernate addin"
        author	 = "Krzysztof Marecki"
        copyright = "LGPLv2"
@@ -9,13 +9,33 @@
        version   = "2.4">
 
 	<Runtime>
-		
+		<Import assembly="MonoDevelop.NHibernate.dll"/>
 	</Runtime>
+	
+	<Dependencies>
+		<Addin id="Core" version="2.4"/>
+		<Addin id="Ide" version="2.4"/>
+	</Dependencies>
+	
+	<Extension path = "/MonoDevelop/Ide/Pads/ProjectPad">
+		<NodeBuilder class = "MonoDevelop.NHibernate.NodeBuilders.ProjectFolderNodeBuilderExtension"/>
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/Ide/FileTemplates">
+		<FileTemplate id = "NHClassMapping" resource = "ClassMapping.xft.xml"/>
+	</Extension>
 	
 	<Extension path = "/MonoDevelop/Ide/Commands">
 		<Category _name = "NHibernate" id = "NHibernate">
 		<Command id = "MonoDevelop.NHibernate.Commands.AddNewHbmFile"
 				_label = "New hbm file..." />
 		</Category>
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/Ide/ContextMenu/ProjectPad/Add">
+		<Condition id="ItemType" value="Project|ProjectFolder">
+			<SeparatorItem insertafter = "MonoDevelop.Ide.Commands.ProjectCommands.AddFiles" />
+			<CommandItem id = "MonoDevelop.NHibernate.Commands.AddNewHbmFile"/>
+		</Condition>
 	</Extension>
 </Addin>
