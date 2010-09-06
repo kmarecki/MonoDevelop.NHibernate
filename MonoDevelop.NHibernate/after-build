@@ -2,8 +2,14 @@
 
 TARGET_FILE=$1
 DEST=~/.config/MonoDevelop/addins/
+DEST2=~/githome/monodevelop/main/build/AddIns/MonoDevelop.NHibernate
 
 if [ ! -d $DEST ]; then
 	mkdir $DEST
 fi
 cp $TARGET_FILE $DEST
+
+if [ ! -d $DEST2 ]; then
+	mkdir $DEST2
+fi
+cp $TARGET_FILE $DEST2

@@ -14,7 +14,7 @@
 
 	<!-- Template Content -->
 	<TemplateFiles>
-		<File name="${Name}.hbm.xml" >
+		<File name="${Name}.hbm.xml"  >
 			<![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
 				   assembly="${ProjectName}" 
@@ -28,6 +28,14 @@
   </class> 
 
 </hibernate-mapping>
+			]]>
+		</File>
+		<File name="${Name}.tt"  >
+			<![CDATA[<#@ template language="C#v3.5" hostspecific="True"#>
+<#	
+	Load ("${Name}.hbm.xml");
+#>
+<#@ include file="generator.tt" #>
 			]]>
 		</File>
 	</TemplateFiles>
