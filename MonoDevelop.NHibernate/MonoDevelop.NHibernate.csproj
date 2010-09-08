@@ -48,34 +48,50 @@
     <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
     </Reference>
     <Reference Include="Mono.Posix" />
+    <Reference Include="Mono.TextTemplating, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>assemblies\Mono.TextTemplating.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Commands.cs" />
     <Compile Include="MonoDevelop.NHibernate.NodeBuilders\ProjectFolderNodeBuilderExtension.cs" />
     <Compile Include="MonoDevelop.NHibernate.NodeBuilders\ProjectFolderCommandHandler.cs" />
-    <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="MonoDevelop.NHibernate.Dialogs\NewHbmFileDialog.cs" />
-    <Compile Include="gtk-gui\MonoDevelop.NHibernate.Dialogs.NewHbmFileDialog.cs" />
+    <Compile Include="MonoDevelop.NHibernate.Dialogs\NewHbmFileDialog.designer.cs">
+      <DependentUpon>NewHbmFileDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\ActionGroups.designer.cs" />
+    <Compile Include="Designer\Gui.designer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <EmbeddedResource Include="MonoDevelop.NHibernate.addin.xml">
       <LogicalName>MonoDevelop.NHibernate.addin.xml</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="gtk-gui\gui.stetic">
-      <LogicalName>gui.stetic</LogicalName>
-    </EmbeddedResource>
     <EmbeddedResource Include="templates\ClassMapping.xft.xml">
       <LogicalName>ClassMapping.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonoDevelop.NHibernate.Dialogs\NewHbmFileDialog.gtkx">
+      <DependentUpon>NewHbmFileDialog.cs</DependentUpon>
+      <LogicalName>NewHbmFileDialog.gtkx</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MonoDevelop.NHibernate.NodeBuilders\" />
     <Folder Include="MonoDevelop.NHibernate.Dialogs\" />
     <Folder Include="templates\" />
+    <Folder Include="assemblies\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="after-build" />
   </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <GtkDesignInfo wasConverted="true" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>

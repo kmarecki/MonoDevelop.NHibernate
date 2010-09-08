@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <stetic-interface>
-  <configuration>
-    <images-root-path>..</images-root-path>
-    <target-gtk-version>2.12</target-gtk-version>
-  </configuration>
-  <import>
-    <widget-library name="MonoDevelop.Ide, Version=2.4.0.0, Culture=neutral" />
-    <widget-library name="../bin/Debug/MonoDevelop.NHibernate.dll" internal="true" />
-  </import>
   <widget class="Gtk.Dialog" id="MonoDevelop.NHibernate.Dialogs.NewHbmFileDialog" design-size="400 300">
     <property name="MemberName" />
     <property name="Title" translatable="yes">New hbm file</property>
