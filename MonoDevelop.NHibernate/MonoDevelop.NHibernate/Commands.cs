@@ -1,8 +1,8 @@
 // 
-//  ProjectFolderNodeBuilderExtension.cs
+//  Commands.cs
 //  
 //  Author:
-//       Krzysztof Marecki
+//       Krzysztof Marecki <marecki.krzysztof@gmail.com>
 // 
 //  Copyright (c) 2010 Krzysztof Marecki
 // 
@@ -21,21 +21,13 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 using System;
 
-using MonoDevelop.Ide.Gui.Components;
-using MonoDevelop.Ide.Gui.Pads.ProjectPad;
-
-namespace MonoDevelop.NHibernate.NodeBuilders
+namespace MonoDevelop.NHibernate
 {
-	public class ProjectFolderNodeBuilderExtension : NodeBuilderExtension
+	public enum Commands
 	{
-		public override bool CanBuildNode (Type dataType)
-		{
-			return typeof(ProjectFolder).IsAssignableFrom (dataType);
-		}
-		
-		public override Type CommandHandlerType {
-			get { return typeof(ProjectFolderCommandHandler); }
-		}
+		AddNewHbmFile,
+		CreateNHProject,
+		GenerateCodeFile
 	}
 }
 

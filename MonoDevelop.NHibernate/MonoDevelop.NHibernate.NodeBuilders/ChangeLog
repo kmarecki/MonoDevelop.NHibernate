@@ -1,0 +1,9 @@
+2010-09-10  Krzysztof Marecki  <>
+
+	* ProjectCommandHandler.cs:
+	* ProjectFileCommandHandler.cs:
+	* ProjectFolderCommandHandler.cs:
+	* ProjectNodeBuilderExtension.cs:
+	* ProjectFileNodeBuilderExtension.cs:
+	* ProjectFolderNodeBuilderExtension.cs: 
+

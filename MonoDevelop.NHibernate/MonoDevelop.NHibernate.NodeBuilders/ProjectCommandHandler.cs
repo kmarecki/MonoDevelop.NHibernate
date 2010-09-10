@@ -1,10 +1,10 @@
 // 
-//  ProjectFolderNodeBuilderExtension.cs
+//  ProjectCommandHandler.cs
 //  
 //  Author:
 //       Krzysztof Marecki
 // 
-//  Copyright (c) 2010 Krzysztof Marecki
+//  Copyright (c) 2010 KrzysztofMarecki
 // 
 //  This library is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as
@@ -21,20 +21,28 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 using System;
 
+using MonoDevelop.Components.Commands;
+using MonoDevelop.Ide;
 using MonoDevelop.Ide.Gui.Components;
 using MonoDevelop.Ide.Gui.Pads.ProjectPad;
+using MonoDevelop.Projects;
 
 namespace MonoDevelop.NHibernate.NodeBuilders
 {
-	public class ProjectFolderNodeBuilderExtension : NodeBuilderExtension
+	public class ProjectCommandHandler : NodeCommandHandler
 	{
-		public override bool CanBuildNode (Type dataType)
+		[CommandHandler (MonoDevelop.NHibernate.Commands.CreateNHProject)]
+		public void OnCreateNHProject ()
 		{
-			return typeof(ProjectFolder).IsAssignableFrom (dataType);
+			DotNetProject project = (DotNetProject) CurrentNode.GetParentDataItem (typeof(DotNetProject), true);
+			NHService.CreateNHibernateProject (project);
 		}
 		
-		public override Type CommandHandlerType {
-			get { return typeof(ProjectFolderCommandHandler); }
+		[CommandUpdateHandler (MonoDevelop.NHibernate.Commands.CreateNHProject)]
+		public void UpdateCreateNHProject (CommandInfo cinfo)
+		{
+			DotNetProject project = (DotNetProject) CurrentNode.GetParentDataItem (typeof(DotNetProject), true);
+			cinfo.Visible = !NHService.HasNHibernateProject (project);
 		}
 	}
 }

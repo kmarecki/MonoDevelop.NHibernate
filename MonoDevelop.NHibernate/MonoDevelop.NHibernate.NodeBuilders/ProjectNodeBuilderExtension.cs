@@ -1,10 +1,10 @@
 // 
-//  ProjectFolderNodeBuilderExtension.cs
+//  ProjectNodeBuilderExtension.cs
 //  
 //  Author:
 //       Krzysztof Marecki
 // 
-//  Copyright (c) 2010 Krzysztof Marecki
+//  Copyright (c) 2010 KrzysztofMarecki
 // 
 //  This library is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as
@@ -23,18 +23,19 @@ using System;
 
 using MonoDevelop.Ide.Gui.Components;
 using MonoDevelop.Ide.Gui.Pads.ProjectPad;
+using MonoDevelop.Projects;
 
 namespace MonoDevelop.NHibernate.NodeBuilders
 {
-	public class ProjectFolderNodeBuilderExtension : NodeBuilderExtension
+	public class ProjectNodeBuilderExtension : NodeBuilderExtension
 	{
 		public override bool CanBuildNode (Type dataType)
 		{
-			return typeof(ProjectFolder).IsAssignableFrom (dataType);
+			return typeof(DotNetProject).IsAssignableFrom (dataType);
 		}
 		
 		public override Type CommandHandlerType {
-			get { return typeof(ProjectFolderCommandHandler); }
+			get { return typeof(ProjectCommandHandler); }
 		}
 	}
 }

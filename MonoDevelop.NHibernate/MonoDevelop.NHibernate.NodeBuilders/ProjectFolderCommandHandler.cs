@@ -2,7 +2,7 @@
 //  NHibernateCommandHandler.cs
 //  
 //  Author:
-//       Krzysztof Marecki <marecki.krzysztof@gmail.com>
+//       Krzysztof Marecki
 // 
 //  Copyright (c) 2010 Krzysztof Marecki
 // 
@@ -20,20 +20,19 @@
 //  License along with this library; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 using System;
+
 using MonoDevelop.Components.Commands;
 using MonoDevelop.Ide;
 using MonoDevelop.Ide.Gui.Components;
 using MonoDevelop.Ide.Gui.Pads.ProjectPad;
 using MonoDevelop.Projects;
 
-using MonoDevelop.NHibernate.Dialogs;
-	
 namespace MonoDevelop.NHibernate.NodeBuilders
 {
 	public class ProjectFolderCommandHandler : NodeCommandHandler
 	{
 		[CommandHandler (MonoDevelop.NHibernate.Commands.AddNewHbmFile)]
-		public void AddNewHbmFile()
+		public void OnAddNewHbmFile()
 		{
 			object dataItem = CurrentNode.DataItem;
 			DotNetProject project = CurrentNode.GetParentDataItem (typeof(Project), true) as DotNetProject;

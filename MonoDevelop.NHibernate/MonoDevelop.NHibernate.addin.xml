@@ -18,7 +18,9 @@
 	</Dependencies>
 	
 	<Extension path = "/MonoDevelop/Ide/Pads/ProjectPad">
+		<NodeBuilder class = "MonoDevelop.NHibernate.NodeBuilders.ProjectNodeBuilderExtension"/>
 		<NodeBuilder class = "MonoDevelop.NHibernate.NodeBuilders.ProjectFolderNodeBuilderExtension"/>
+		<NodeBuilder class = "MonoDevelop.NHibernate.NodeBuilders.ProjectFileNodeBuilderExtension"/>
 	</Extension>
 	
 	<Extension path = "/MonoDevelop/Ide/FileTemplates">
@@ -29,7 +31,25 @@
 		<Category _name = "NHibernate" id = "NHibernate">
 		<Command id = "MonoDevelop.NHibernate.Commands.AddNewHbmFile"
 				_label = "New hbm file..." />
+		<Command id = "MonoDevelop.NHibernate.Commands.CreateNHProject"
+				_label = "Add NHibernate support"
+				icon = "md-nhibernate-logo"/>
+		<Command id = "MonoDevelop.NHibernate.Commands.GenerateCodeFile"
+				_label = "Generate code file..."/>
 		</Category>
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/Ide/ContextMenu/ProjectPad">
+		<Condition id="ItemType" value="Project">
+			<SeparatorItem insertafter="BuildSectionEnd" />
+			<CommandItem id = "MonoDevelop.NHibernate.Commands.CreateNHProject" />
+			<SeparatorItem/>
+		</Condition>
+		<Condition id="ItemType" value="ProjectFile">
+			<SeparatorItem insertafter="BuildSectionEnd" />
+			<CommandItem id = "MonoDevelop.NHibernate.Commands.GenerateCodeFile" />
+			<SeparatorItem/>
+		</Condition>
 	</Extension>
 	
 	<Extension path = "/MonoDevelop/Ide/ContextMenu/ProjectPad/Add">
@@ -37,5 +57,16 @@
 			<SeparatorItem insertafter = "MonoDevelop.Ide.Commands.ProjectCommands.AddFiles" />
 			<CommandItem id = "MonoDevelop.NHibernate.Commands.AddNewHbmFile"/>
 		</Condition>
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/ProjectModel/ExtendedProperties">
+		<ItemProperty class = "MonoDevelop.Projects.Project"
+		              name = "NHProject"
+		              skipEmpty = "True"
+		              type = "MonoDevelop.NHibernate.NHProject" />
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/Core/StockIcons">
+		<StockIcon stockid = "md-nhibernate-logo" resource = "nhlogo_64.png" />
 	</Extension>
 </Addin>
