@@ -62,14 +62,15 @@
     </Compile>
     <Compile Include="Designer\ActionGroups.designer.cs" />
     <Compile Include="Designer\Gui.designer.cs" />
-    <Compile Include="MonoDevelop.NHibernate\NHProject.cs" />
-    <Compile Include="MonoDevelop.NHibernate\NHService.cs" />
     <Compile Include="MonoDevelop.NHibernate\Commands.cs" />
     <Compile Include="MonoDevelop.NHibernate.NodeBuilders\ProjectNodeBuilderExtension.cs" />
     <Compile Include="MonoDevelop.NHibernate.NodeBuilders\ProjectCommandHandler.cs" />
     <Compile Include="MonoDevelop.NHibernate.NodeBuilders\ProjectFileCommandHandler.cs" />
     <Compile Include="MonoDevelop.NHibernate.NodeBuilders\ProjectFileNodeBuilderExtension.cs" />
     <Compile Include="MonoDevelop.NHibernate\SimpleFileTemplate.cs" />
+    <Compile Include="MonoDevelop.NHibernate\NHibernateProject.cs" />
+    <Compile Include="MonoDevelop.NHibernate\NHibernateService.cs" />
+    <Compile Include="MonoDevelop.NHibernate\NHibernateBuildExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

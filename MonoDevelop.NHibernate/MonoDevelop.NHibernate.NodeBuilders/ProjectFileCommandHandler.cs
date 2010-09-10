@@ -37,8 +37,8 @@ namespace MonoDevelop.NHibernate.NodeBuilders
 			ProjectFile pf = CurrentNode.GetParentDataItem (typeof(ProjectFile), true) as ProjectFile;
 			DotNetProject project = CurrentNode.GetParentDataItem (typeof(DotNetProject), true) as DotNetProject;
 			if (project != null && pf != null) {
-				if (NHService.HasNHibernateProject (project)) {
-					NHProject nhproject = NHService.GetNHibernateProject (project);
+				if (NHibernateService.HasNHibernateProject (project)) {
+					NHibernateProject nhproject = NHibernateService.GetNHibernateProject (project);
 					nhproject.GenerateCodeFile (pf);
 				}
 			}
@@ -50,8 +50,8 @@ namespace MonoDevelop.NHibernate.NodeBuilders
 			ProjectFile pf = CurrentNode.GetParentDataItem (typeof(ProjectFile), true) as ProjectFile;
 			DotNetProject project = CurrentNode.GetParentDataItem (typeof(DotNetProject), true) as DotNetProject;
 			if (project != null && pf != null) {
-				if (NHService.HasNHibernateProject (project)) {
-					NHProject nhproject = NHService.GetNHibernateProject (project);
+				if (NHibernateService.HasNHibernateProject (project)) {
+					NHibernateProject nhproject = NHibernateService.GetNHibernateProject (project);
 					cinfo.Visible = nhproject.IsHbmFile (pf);
 					return;
 				}

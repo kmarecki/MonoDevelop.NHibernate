@@ -59,11 +59,17 @@
 		</Condition>
 	</Extension>
 	
+	<Extension path = "/MonoDevelop/ProjectModel/ProjectServiceExtensions">
+		<Condition id="ItemType" value="MonoDevelop.Projects.DotNetProject">
+			<Class class = "MonoDevelop.NHibernate.NHibernateBuildExtension" insertafter="MidStep" />
+		</Condition>
+	</Extension>
+	
 	<Extension path = "/MonoDevelop/ProjectModel/ExtendedProperties">
 		<ItemProperty class = "MonoDevelop.Projects.Project"
-		              name = "NHProject"
+		              name = "NHibernateProject"
 		              skipEmpty = "True"
-		              type = "MonoDevelop.NHibernate.NHProject" />
+		              type = "MonoDevelop.NHibernate.NHibernateProject" />
 	</Extension>
 	
 	<Extension path = "/MonoDevelop/Core/StockIcons">

@@ -1,15 +1,16 @@
 #!/bin/bash
 
 TARGET_FILE=$1
-DEST=~/.config/MonoDevelop/addins/
-DEST2=~/githome/monodevelop/main/build/AddIns/MonoDevelop.NHibernate
+TARGET_DIR=`dirname $TARGET_FILE`
+MONO_TEXTTEMPLATING_FILE="$TARGET_DIR/Mono.TextTemplating.dll"
 
-if [ ! -d $DEST ]; then
-	mkdir $DEST
-fi
-cp $TARGET_FILE $DEST
+DEST[0]=~/.config/MonoDevelop/addins/
+DEST[1]=~/githome/monodevelop/main/build/AddIns/MonoDevelop.NHibernate
 
-if [ ! -d $DEST2 ]; then
-	mkdir $DEST2
-fi
-cp $TARGET_FILE $DEST2
+for DIR in ${DEST[*]}; do
+	if [ ! -d $DIR ]; then
+		mkdir $DIR
+	fi
+	cp $TARGET_FILE $DIR
+	cp $MONO_TEXTTEMPLATING_FILE $DIR
+done

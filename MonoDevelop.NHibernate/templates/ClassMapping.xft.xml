@@ -2,13 +2,14 @@
 <Template
 	Originator="Krzysztof Marecki"
 	Created="2010/07/29"
-	LastModified="2010/07/29">
+	LastModified="2010/09/10">
 
 	<!-- Template Header -->
 	<TemplateConfiguration>
 		<_Name>Class mapping file</_Name>
-		<Icon></Icon>
+		<Icon>md-nhibernate-logo</Icon>
 		<_Category>NHibernate</_Category>
+		<LanguageName>C#</LanguageName>
 		<_Description>NHibernate class mapping file</_Description>
 	</TemplateConfiguration>
 
@@ -30,13 +31,18 @@
 </hibernate-mapping>
 			]]>
 		</File>
-		<File name="${Name}.tt"  >
-			<![CDATA[<#@ template language="C#v3.5" hostspecific="True"#>
-<#	
-	Load ("${Name}.hbm.xml");
-#>
-<#@ include file="generator.tt" #>
-			]]>
-		</File>
+		<CodeTranslationFile name="${Name}.${LanguageExtension}" DependsOn="${Name}.hbm.xml" >
+<![CDATA[﻿using System;
+
+namespace ${Namespace}
+{	
+	public partial class ${EscapedIdentifier}
+	{	
+		public ${EscapedIdentifier} ()
+		{
+			
+		}	
+	}
+}]]></CodeTranslationFile>
 	</TemplateFiles>
 </Template>
