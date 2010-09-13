@@ -1,3 +1,9 @@
+2010-09-13  Krzysztof Marecki  <>
+
+	* Commands.cs:
+	* MonoDevelop.NHibernate.pidb:
+	* MonoDevelop.NHibernate.userprefs: 
+
 2010-09-10  Krzysztof Marecki  <>
 
 	* MonoDevelop.NHibernate.csproj:
