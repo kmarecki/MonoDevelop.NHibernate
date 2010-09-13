@@ -30,6 +30,7 @@ using System.Collections.Generic;
 using System.IO;
 
 using MonoDevelop.Core;
+using MonoDevelop.Ide.Tasks;
 using MonoDevelop.Projects;
 using Mono.TextTemplating;
 
@@ -56,6 +57,10 @@ namespace MonoDevelop.NHibernate
 			get {
 				if (generator == null) {
 					generator = new TemplateGenerator ();
+					var configuration = (DotNetProjectConfiguration) project.DefaultConfiguration;
+					generator.Refs.Add (configuration.CompiledOutputName);
+					Console.WriteLine(configuration.CompiledOutputName.ParentDirectory);
+					generator.ReferencePaths.Add (configuration.CompiledOutputName.ParentDirectory);
 				}
 				return generator;
 			}
@@ -109,7 +114,8 @@ namespace MonoDevelop.NHibernate
 			
 			try {
 				CodeFileTemplate.WriteFor (pf, classTemplateFile);
-				Generator.ProcessTemplate (classTemplateFile,codeFile);
+				Generator.ProcessTemplate (classTemplateFile, codeFile);
+				ShowTemplateGeneratorErrors (Generator.Errors);
 				
 				if (File.Exists (codeFile) && !project.IsFileInProject (codeFile)) {
 					ProjectFile pfCode = project.AddFile (codeFile, BuildAction.Compile);
@@ -158,6 +164,19 @@ namespace MonoDevelop.NHibernate
 		public bool IsHbmFile (ProjectFile pf)
 		{
 			return pf.Name.Contains (HbmFileExtension);
+		}
+		
+		void ShowTemplateGeneratorErrors (CompilerErrorCollection errors)
+		{
+			if (errors.Count == 0)
+				return;
+			
+			TaskService.Errors.Clear ();
+			foreach (CompilerError err in errors) {
+					TaskService.Errors.Add (new Task (err.FileName, err.ErrorText, err.Column, err.Line,
+					                                  err.IsWarning? TaskSeverity.Warning : TaskSeverity.Error));
+			}
+			TaskService.ShowErrors ();
 		}
 	}
 }

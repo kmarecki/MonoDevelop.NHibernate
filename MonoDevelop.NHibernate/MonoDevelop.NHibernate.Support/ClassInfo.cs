@@ -1,5 +1,5 @@
 // 
-//  SimpleFileTemplate.cs
+//  ClassInfo.cs
 //  
 //  Author:
 //       Krzysztof Marecki
@@ -20,36 +20,12 @@
 //  License along with this library; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 using System;
-using System.IO;
-
-using MonoDevelop.Projects;
-
-namespace MonoDevelop.NHibernate
+namespace MonoDevelop.NHibernate.Support
 {
-	public class SimpleFileTemplate
+	public class ClassInfo
 	{
-		string content;
-		string templatePath;
-		
-		public SimpleFileTemplate ()
+		public ClassInfo ()
 		{
-		}
-		
-		public void ReadTemplate (string path)
-		{
-			templatePath = path;	
-		}
-		
-		public void WriteFor (ProjectFile pf, string path)
-		{
-			using (TextReader reader = new StreamReader (templatePath)) {
-				content = reader.ReadToEnd ();
-			}
-			
-			string data = content.Replace (@"${Name}", pf.Name);
-			using (TextWriter writer = File.CreateText (path)) {
-				writer.Write (data);
-			}
 		}
 	}
 }

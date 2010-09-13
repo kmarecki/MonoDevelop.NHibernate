@@ -71,6 +71,7 @@
     <Compile Include="MonoDevelop.NHibernate\NHibernateProject.cs" />
     <Compile Include="MonoDevelop.NHibernate\NHibernateService.cs" />
     <Compile Include="MonoDevelop.NHibernate\NHibernateBuildExtension.cs" />
+    <Compile Include="MonoDevelop.NHibernate.Support\ClassInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -95,6 +96,7 @@
     <Folder Include="assemblies\" />
     <Folder Include="MonoDevelop.NHibernate\" />
     <Folder Include="icons\" />
+    <Folder Include="MonoDevelop.NHibernate.Support\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="after-build" />
