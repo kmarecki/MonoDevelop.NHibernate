@@ -28,8 +28,10 @@ using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 using MonoDevelop.Core;
+using MonoDevelop.Ide;
 using MonoDevelop.Ide.Tasks;
 using MonoDevelop.Projects;
 using Mono.TextTemplating;
@@ -57,15 +59,18 @@ namespace MonoDevelop.NHibernate
 			get {
 				if (generator == null) {
 					generator = new TemplateGenerator ();
+					
 					var configuration = (DotNetProjectConfiguration) project.DefaultConfiguration;
 					generator.Refs.Add (configuration.CompiledOutputName);
-					Console.WriteLine(configuration.CompiledOutputName.ParentDirectory);
 					generator.ReferencePaths.Add (configuration.CompiledOutputName.ParentDirectory);
+				
+					var assembly = Assembly.GetExecutingAssembly ();
+					generator.Refs.Add (assembly.FullName);
+					generator.ReferencePaths.Add (Path.GetDirectoryName(assembly.CodeBase));
 				}
 				return generator;
 			}
 		}
-		
 		
 		public NHibernateProject (DotNetProject project)
 		{

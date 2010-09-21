@@ -10,6 +10,8 @@
 
 	<Runtime>
 		<Import assembly="MonoDevelop.NHibernate.dll"/>
+		<Import file="schemas/nhibernate-configuration.xsd"/>
+		<Import file="schemas/nhibernate-mapping.xsd"/>
 	</Runtime>
 	
 	<Dependencies>
@@ -18,9 +20,9 @@
 	</Dependencies>
 	
 	<Extension path = "/MonoDevelop/Ide/Pads/ProjectPad">
-<!--		<NodeBuilder class = "MonoDevelop.NHibernate.NodeBuilders.ProjectNodeBuilderExtension"/>-->
+		<NodeBuilder class = "MonoDevelop.NHibernate.NodeBuilders.ProjectNodeBuilderExtension"/>
 		<NodeBuilder class = "MonoDevelop.NHibernate.NodeBuilders.ProjectFolderNodeBuilderExtension"/>
-<!--		<NodeBuilder class = "MonoDevelop.NHibernate.NodeBuilders.ProjectFileNodeBuilderExtension"/>-->
+		<NodeBuilder class = "MonoDevelop.NHibernate.NodeBuilders.ProjectFileNodeBuilderExtension"/>
 	</Extension>
 	
 	<Extension path = "/MonoDevelop/Ide/FileTemplates">
@@ -31,25 +33,25 @@
 		<Category _name = "NHibernate" id = "NHibernate">
 		<Command id = "MonoDevelop.NHibernate.Commands.AddNewHbmFile"
 				_label = "New hbm file..." />
-<!--		<Command id = "MonoDevelop.NHibernate.Commands.CreateNHProject"
+		<Command id = "MonoDevelop.NHibernate.Commands.CreateNHProject"
 				_label = "Add NHibernate support"
 				icon = "md-nhibernate-logo"/>
 		<Command id = "MonoDevelop.NHibernate.Commands.GenerateCodeFile"
-				_label = "Generate code file..."/>-->
+				_label = "Generate code file..."/>
 		</Category>
 	</Extension>
 	
 	<Extension path = "/MonoDevelop/Ide/ContextMenu/ProjectPad">
-<!--		<Condition id="ItemType" value="Project">
+		<Condition id="ItemType" value="Project">
 			<SeparatorItem insertafter="BuildSectionEnd" />
 			<CommandItem id = "MonoDevelop.NHibernate.Commands.CreateNHProject" />
 			<SeparatorItem/>
-		</Condition>-->
-<!--		<Condition id="ItemType" value="ProjectFile">
+		</Condition>
+		<Condition id="ItemType" value="ProjectFile">
 			<SeparatorItem insertafter="BuildSectionEnd" />
 			<CommandItem id = "MonoDevelop.NHibernate.Commands.GenerateCodeFile" />
 			<SeparatorItem/>
-		</Condition>-->
+		</Condition>
 	</Extension>
 	
 	<Extension path = "/MonoDevelop/Ide/ContextMenu/ProjectPad/Add">

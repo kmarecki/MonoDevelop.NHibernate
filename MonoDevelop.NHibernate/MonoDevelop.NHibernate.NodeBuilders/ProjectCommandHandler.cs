@@ -38,12 +38,12 @@ namespace MonoDevelop.NHibernate.NodeBuilders
 			NHibernateService.CreateNHibernateProject (project);
 		}
 		
-		[CommandUpdateHandler (MonoDevelop.NHibernate.Commands.CreateNHProject)]
-		public void UpdateCreateNHProject (CommandInfo cinfo)
-		{
-			DotNetProject project = (DotNetProject) CurrentNode.GetParentDataItem (typeof(DotNetProject), true);
-			cinfo.Visible = !NHibernateService.HasNHibernateProject (project);
-		}
+//		[CommandUpdateHandler (MonoDevelop.NHibernate.Commands.CreateNHProject)]
+//		public void UpdateCreateNHProject (CommandInfo cinfo)
+//		{
+//			DotNetProject project = (DotNetProject) CurrentNode.GetParentDataItem (typeof(DotNetProject), true);
+//			cinfo.Visible = !NHibernateService.HasNHibernateProject (project);
+//		}
 	}
 }
 

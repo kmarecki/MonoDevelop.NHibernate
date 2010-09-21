@@ -23,6 +23,7 @@ using System;
 
 using MonoDevelop.Components.Commands;
 using MonoDevelop.Ide;
+using MonoDevelop.Ide.Gui;
 using MonoDevelop.Ide.Gui.Components;
 using MonoDevelop.Ide.Gui.Pads.ProjectPad;
 using MonoDevelop.Projects;
@@ -38,8 +39,14 @@ namespace MonoDevelop.NHibernate.NodeBuilders
 			DotNetProject project = CurrentNode.GetParentDataItem (typeof(DotNetProject), true) as DotNetProject;
 			if (project != null && pf != null) {
 				if (NHibernateService.HasNHibernateProject (project)) {
+					Document doc = IdeApp.Workbench.GetDocument (pf.FilePath);
+					if (doc != null) {
+						doc.Save ();
+					}
 					NHibernateProject nhproject = NHibernateService.GetNHibernateProject (project);
 					nhproject.GenerateCodeFile (pf);
+					
+					IdeApp.ProjectOperations.Save (project);
 				}
 			}
 		}
